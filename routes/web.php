@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\SiswasController;
+use App\Http\Controllers\PpdbsController;
 
+use App\Models\Barang;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -106,6 +110,7 @@ function($nama,$telepon,$jenis,$barang,$jumlah,$bayar){
         $cashback = 0;
     }
 
+// output
 return "Nama Pembeli :".$nama."<br>".
        "Telepon :".$telepon."<br>".
        "----------------------------<br>".
@@ -123,8 +128,49 @@ return "Nama Pembeli :".$nama."<br>".
        ;
 });
 
+// end latihan
+
 Route::get('/siswa',function(){
 $data_siswa =['vika','isma','eva'];
 
 return view('tampil',compact('data_siswa'));
 });
+
+// Routing dg model
+Route::get('/post',[PostsController::class,'menampilkan']);
+Route::get('/barang',[PostsController::class,'menampilkan2']);
+
+// Route::get('/barang',function(){
+//     $barang = Barang::all();
+//     return view('tampil_barang',compact('barang'));
+//        });
+
+
+// Routing dg ORM
+
+// Route::get('/post',function(){
+//     // Mencari berdasarkan kata harus pakai LIKE terus ada persennya
+//     $post = Post::where('title','LIKE','%tips%')->get();
+
+//     // Menampilkan berdasarkan id
+//     // $post = Post::where('id',1)->get();
+
+//     return view('tampil_post',compact('post'));
+//     });
+
+
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// CRUD
+
+Route::resource('siswa', SiswasController::class);
+
+// Route PPDB (CRUD)
+
+Route::resource('ppdb', PpdbsController::class);

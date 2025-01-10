@@ -18,7 +18,8 @@ class PostsTableSeeder extends Seeder
         $posts=[
             ['title'=>'Tips cepat Kaya','content'=>'lorem ipsum'],
             ['title'=>'Haruskah menunda Belajar?','content'=>'lorem ipsum'],
-            ['title'=>'Membangun visi misi kesuksesan','content'=>'lorem ipsum']
+            ['title'=>'Membangun visi misi kesuksesan','content'=>'lorem ipsum'],
+            
         ];
 
         // Masukkan Data Ke database
